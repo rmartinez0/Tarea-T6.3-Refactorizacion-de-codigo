@@ -18,19 +18,47 @@ public class Hotel {
         this.telefono = telefono;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public Map<Integer, Cliente> getClientes() {
+        return clientes;
+    }
+
+    public List<Habitacion> getHabitaciones() {
+        return habitaciones;
+    }
+
+    public Map<Integer, List<Reserva>> getReservasPorHabitacion() {
+        return reservasPorHabitacion;
+    }
+
     // Método para agregar una nueva habitación al hotel
     public void registrarHabitacion(String tipo, double precioBase) {
         Habitacion habitacion = new Habitacion(habitaciones.size() + 1, tipo, precioBase);
         habitaciones.add(habitacion);
         reservasPorHabitacion.put(habitacion.getNumero(), new ArrayList<>());
-    }
-
-    public void registrarHabitaciones(List<String> tipos, List<Double> preciosBase) {
-        for(int i = 0; i < tipos.size(); i++) {
-            Habitacion habitacion = new Habitacion(habitaciones.size() + 1, tipos.get(i), preciosBase.get(i));
-            habitaciones.add(habitacion);
-            reservasPorHabitacion.put(habitacion.getNumero(), new ArrayList<>());
-        }
     }
 
     public void listarHabitacionesDisponibles() {
@@ -58,65 +86,68 @@ public class Hotel {
     // en caso de que haya realizado más de 3 reservas en el último año.
     public int reservarHabitacion(int clienteId, String tipo, LocalDate fechaEntrada, LocalDate fechaSalida) {
         // Comprobamos si hay habitaciones en el hotel
-        if(!habitaciones.isEmpty()) {
-            //comprobamos si existe el cliente
-            if(this.clientes.get(clienteId) != null) {
-                Cliente cliente = this.clientes.get(clienteId);
-                // comprobamos si las fechas son coherentes
-                if(fechaEntrada.isBefore(fechaSalida)) {
-                    //buscamos una habitación disponible
-                    for(Habitacion habitacion : habitaciones) {
-                        if(habitacion.getTipo().equals(tipo.toUpperCase()) && habitacion.isDisponible()) {
-                            // Comprobamos si el cliente pasa a ser vip tras la nueva reserva
-                            int numReservas = 0;
-                            for (List<Reserva> reservasHabitacion : reservasPorHabitacion.values()) {
-                                for(Reserva reservaCliente : reservasHabitacion) {
-                                    if(reservaCliente.getCliente().equals(cliente)) {
-                                        if(reservaCliente.getFechaInicio().isAfter(LocalDate.now().minusYears(1))) {
-                                            numReservas++;
-                                        }
-                                    }
-                                }
-                            }
-                            if(numReservas > 3 && !cliente.esVip) {
-                                cliente.esVip = true;
-                                System.out.println("El cliente " + cliente.nombre + " ha pasado a ser VIP");
-                            }
-
-                            // Creamos la reserva
-                            Reserva reserva = new Reserva(reservasPorHabitacion.size() + 1, habitacion, cliente, fechaEntrada, fechaSalida);
-                            reservasPorHabitacion.get(habitacion.getNumero()).add(reserva);
-                            // Marcamos la habitación como no disponible
-                            habitacion.reservar();
-
-                            System.out.println("Reserva realizada con éxito");
-                            return habitacion.getNumero();
-                        }
-                    }
-                    // si no hay habitaciones disponibles del tipo solicitado, mostramos un mensaje
-                    System.out.println("No hay habitaciones disponibles del tipo " + tipo);
-                    return -1;
-                } else {
-                    System.out.println("La fecha de entrada es posterior a la fecha de salida");
-                    return -2;
-                }
-            } else {
-                System.out.println("No existe el cliente con id " + clienteId);
-                return -3;
-            }
-        } else {
+        if (habitaciones.isEmpty()) {
             System.out.println("No hay habitaciones en el hotel");
             return -4;
         }
 
-        return 0;
+        // comprobamos si existe el cliente
+        if (this.clientes.get(clienteId) == null) {
+            System.out.println("No existe el cliente con id " + clienteId);
+            return -3;
+        }
+
+        Cliente cliente = this.clientes.get(clienteId);
+
+        // comprobamos si las fechas son coherentes
+        if (!fechaEntrada.isBefore(fechaSalida)) {
+            System.out.println("La fecha de entrada es posterior a la fecha de salida");
+            return -2;
+        }
+
+        // buscamos una habitación disponible
+        for(Habitacion habitacion : habitaciones) {
+            if (!habitacion.getTipo().equals(tipo.toUpperCase()) || !habitacion.isDisponible()) {
+                continue;
+            }
+            comprobarYActualizarVip(cliente);
+
+            Reserva reserva = new Reserva(reservasPorHabitacion.size() + 1, habitacion, cliente, fechaEntrada, fechaSalida);
+            reservasPorHabitacion.get(habitacion.getNumero()).add(reserva);
+            habitacion.reservar();
+
+            System.out.println("Reserva realizada con éxito");
+            return habitacion.getNumero();
+        }
+
+        System.out.println("No hay habitaciones disponibles del tipo " + tipo);
+        return -1;
+    }
+
+    private void comprobarYActualizarVip(Cliente cliente) {
+        // Comprobamos si el cliente pasa a ser vip tras la nueva reserva
+        int numReservas = 0;
+        for (List<Reserva> reservasHabitacion : reservasPorHabitacion.values()) {
+            for(Reserva reservaCliente : reservasHabitacion) {
+                if (!reservaCliente.getCliente().equals(cliente)) {
+                    continue;
+                }
+                if(reservaCliente.getFechaInicio().isAfter(LocalDate.now().minusYears(1))) {
+                    numReservas++;
+                }
+            }
+        }
+        if(numReservas > 3 && !cliente.getEsVip()) {
+            cliente.setEsVip(true);
+            System.out.println("El cliente " + cliente.getNombre() + " ha pasado a ser VIP");
+        }
     }
 
     public void listarReservas() {
-        reservasPorHabitacion.forEach((key, value) -> {
-            System.out.println("Habitación #" + key);
-            value.forEach(reserva -> System.out.println(
-                "Reserva #" + reserva.getId() + " - Cliente: " + reserva.getCliente().nombre
+        reservasPorHabitacion.forEach((numeroHabitacion, listaReservas) -> {
+            System.out.println("Habitación #" + numeroHabitacion);
+            listaReservas.forEach(reserva -> System.out.println(
+                "Reserva #" + reserva.getId() + " - Cliente: " + reserva.getCliente().getNombre()
                     + " - Fecha de entrada: " + reserva.getFechaInicio()
                     + " - Fecha de salida: " + reserva.getFechaFin()));
         });
@@ -124,12 +155,12 @@ public class Hotel {
 
     public void listarClientes() {
         for(Cliente cliente : clientes.values()) {
-            System.out.println("Cliente #" + cliente.id + " - Nombre: " + cliente.nombre + " - DNI: " + cliente.dni + " - VIP: " + cliente.esVip);
+            System.out.println("Cliente #" + cliente.getId() + " - Nombre: " + cliente.getNombre() + " - DNI: " + cliente.getDni() + " - VIP: " + cliente.getEsVip());
         }
     }
 
     public void registrarCliente(String nombre, String email, String dni, boolean esVip) {
         Cliente cliente = new Cliente(clientes.size() + 1, nombre, dni, email, esVip);
-        clientes.put(cliente.id, cliente);
+        clientes.put(cliente.getId(), cliente);
     }
 }

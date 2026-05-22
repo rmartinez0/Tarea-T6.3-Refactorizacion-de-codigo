@@ -46,6 +46,6 @@ public class Habitacion {
         if (disponible) {
             System.out.println("Habitación #" + numero + " ya reservada");
         }
-        disponible = true;
+        disponible = false;
     }
 }
