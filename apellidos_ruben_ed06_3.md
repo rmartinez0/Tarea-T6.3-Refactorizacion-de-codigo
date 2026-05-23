@@ -18,11 +18,11 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución (Invert If / Early Return):** Se han invertido las condiciones usando las sugerencias del IDE  y se han eliminado los bloques `else` para forzar salidas tempranas (*Early Return*).
     * **Evidencia:**
      <img width="670" height="420" alt="image" src="https://github.com/user-attachments/assets/d9a7b456-dcf1-4ded-a62a-d8d2466f8423" />
-   <img width="669" height="420" alt="image" src="https://github.com/user-attachments/assets/ed790aef-6c54-4ca0-a850-         23efd9fdce27" />
-   <img width="662" height="295" alt="image" src="https://github.com/user-attachments/assets/4a3a36e6-c2cb-4d60-8ed2-798631c6cf44" />
-<img width="646" height="270" alt="image" src="https://github.com/user-attachments/assets/a69c30a7-e687-4102-89ca-bc6f61bfa58d" />
-<img width="664" height="354" alt="image" src="https://github.com/user-attachments/assets/06308eef-c2de-4cde-82b5-088012152e30" />
-<img width="610" height="313" alt="image" src="https://github.com/user-attachments/assets/4a50584d-ed64-4014-bd55-0c3ea648cf2f" />
+      <img width="669" height="420" alt="image" src="https://github.com/user-attachments/assets/ed790aef-6c54-4ca0-a850-         23efd9fdce27" />
+      <img width="662" height="295" alt="image" src="https://github.com/user-attachments/assets/4a3a36e6-c2cb-4d60-8ed2-798631c6cf44" />
+      <img width="646" height="270" alt="image" src="https://github.com/user-attachments/assets/a69c30a7-e687-4102-89ca-bc6f61bfa58d" />
+      <img width="664" height="354" alt="image" src="https://github.com/user-attachments/assets/06308eef-c2de-4cde-82b5-088012152e30" />
+      <img width="610" height="313" alt="image" src="https://github.com/user-attachments/assets/4a50584d-ed64-4014-bd55-0c3ea648cf2f" />
 
 * **Code Smell:** Método Largo (Long Method).
     * **Problema:** La comprobación de si un cliente pasaba a ser VIP estaba mezclada con la lógica de reserva dentro de `reservarHabitacion`.
@@ -37,21 +37,21 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución:** Se cambiaron los atributos a `private` y se modificó `Hotel` para usar los *Getters* y *Setters* (`getNombre()`, `setEsVip()`, etc.).
     * **Evidencia:**
     **Antes**
-  <img width="740" height="72" alt="image" src="https://github.com/user-attachments/assets/1ef5d161-e8c4-4a8a-9516-e80182028c07" />
+     <img width="740" height="72" alt="image" src="https://github.com/user-attachments/assets/1ef5d161-e8c4-4a8a-9516-e80182028c07" />
     **Despues**
-  <img width="746" height="61" alt="image" src="https://github.com/user-attachments/assets/c56cac0a-075d-4179-beea-0e01b07ccf95" />
+     <img width="746" height="61" alt="image" src="https://github.com/user-attachments/assets/c56cac0a-075d-4179-beea-0e01b07ccf95" />
     **Antes**
       <img width="819" height="388" alt="image" src="https://github.com/user-attachments/assets/81881c64-ab22-454d-b86a-0b3ed9132adc" />
     **Despues**
-  <img width="761" height="364" alt="image" src="https://github.com/user-attachments/assets/a0dc4b5b-d8d7-4265-99f8-49af701715f4" />
+     <img width="761" height="364" alt="image" src="https://github.com/user-attachments/assets/a0dc4b5b-d8d7-4265-99f8-49af701715f4" />
     **Antes**
-  <img width="762" height="99" alt="image" src="https://github.com/user-attachments/assets/8c78f6d6-2bd3-478b-bdf5-f6273b96e0ed" />
+     <img width="762" height="99" alt="image" src="https://github.com/user-attachments/assets/8c78f6d6-2bd3-478b-bdf5-f6273b96e0ed" />
     **Despues**
-  <img width="768" height="75" alt="image" src="https://github.com/user-attachments/assets/7e67c27c-d29c-4666-a418-eb7d9b799b89" />
+     <img width="768" height="75" alt="image" src="https://github.com/user-attachments/assets/7e67c27c-d29c-4666-a418-eb7d9b799b89" />
    **Antes**
-  <img width="762" height="186" alt="image" src="https://github.com/user-attachments/assets/dd0187e0-69a4-472d-8f12-d2fd53b6bb21" />
+     <img width="762" height="186" alt="image" src="https://github.com/user-attachments/assets/dd0187e0-69a4-472d-8f12-d2fd53b6bb21" />
     **Despues**
-  <img width="770" height="217" alt="image" src="https://github.com/user-attachments/assets/906700a9-a9d9-4850-9c18-cf5c87cd3ad5" />
+     <img width="770" height="217" alt="image" src="https://github.com/user-attachments/assets/906700a9-a9d9-4850-9c18-cf5c87cd3ad5" />
   
 * **Code Smell:** Código Muerto (Dead Code).
     * **Problema:** El método `registrarHabitaciones` estaba definido pero nunca se invocaba.
@@ -65,8 +65,8 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Evidencia:**
      **Antes**
      <img width="758" height="203" alt="image" src="https://github.com/user-attachments/assets/20321d7a-00f0-46d2-92a8-65c0e7281863" />
-      **Despues**
-      <img width="762" height="202" alt="image" src="https://github.com/user-attachments/assets/2dc7e6a9-da00-4ac1-a876-673282c0566b" />
+     **Despues**
+     <img width="762" height="202" alt="image" src="https://github.com/user-attachments/assets/2dc7e6a9-da00-4ac1-a876-673282c0566b" />
       
 ### 2.2. Clase `Reserva.java`
 * **Code Smell:** Nombres poco descriptivos.
