@@ -17,21 +17,20 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Problema:** El método `reservarHabitacion` tenía múltiples niveles de `if` anidados (`if-else`) que dificultaban seriamente su lectura.
     * **Solución (Invert If / Early Return):** Se han invertido las condiciones usando las sugerencias del IDE  y se han eliminado los bloques `else` para forzar salidas tempranas (*Early Return*).
     * **Evidencia:**
-     ![alt text](image-2.png)
-     ![alt text](image-3.png)
-     ![alt text](image-4.png)
-     ![alt text](image-5.png)
-     ![alt text](image-6.png)
-
+     <img width="670" height="420" alt="image" src="https://github.com/user-attachments/assets/d9a7b456-dcf1-4ded-a62a-d8d2466f8423" />
+   <img width="669" height="420" alt="image" src="https://github.com/user-attachments/assets/ed790aef-6c54-4ca0-a850-         23efd9fdce27" />
+   <img width="662" height="295" alt="image" src="https://github.com/user-attachments/assets/4a3a36e6-c2cb-4d60-8ed2-798631c6cf44" />
+<img width="646" height="270" alt="image" src="https://github.com/user-attachments/assets/a69c30a7-e687-4102-89ca-bc6f61bfa58d" />
+<img width="664" height="354" alt="image" src="https://github.com/user-attachments/assets/06308eef-c2de-4cde-82b5-088012152e30" />
+<img width="610" height="313" alt="image" src="https://github.com/user-attachments/assets/4a50584d-ed64-4014-bd55-0c3ea648cf2f" />
 
 * **Code Smell:** Método Largo (Long Method).
     * **Problema:** La comprobación de si un cliente pasaba a ser VIP estaba mezclada con la lógica de reserva dentro de `reservarHabitacion`.
     * **Solución (Extract Method):** Se ha extraído esta lógica a un nuevo método privado llamado `comprobarYActualizarVip()`.
     * **Evidencia:**
     **Antes**
-    ![alt text](image-7.png)
-    **Depues**
-    ![alt text](image-8.png)
+      <img width="680" height="299" alt="image" src="https://github.com/user-attachments/assets/93a8abc3-0a9e-4e82-bea4-edd22bde09db" />
+      <img width="670" height="322" alt="image" src="https://github.com/user-attachments/assets/d50f22bb-6c10-4eaa-a6cd-64fc831932f1" />
 
 * **Code Smell:** Intimidad Inapropiada (Falta de encapsulamiento).
     * **Problema:** La clase `Hotel` accedía directamente a los atributos públicos de `Cliente` (ej. `cliente.nombre`, `cliente.esVip`).
@@ -76,22 +75,23 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución (Rename):** Se han renombrado a `numeroNoches`, `precioBaseTotal` y `precioFinal`.
     * **Evidencia:**
       **Antes**
-      ![alt text](image-28.png)
+      <img width="662" height="126" alt="image" src="https://github.com/user-attachments/assets/79747cbc-151c-498e-8532-5241b189cd3d" />
       **Despues**
-      ![alt text](image-29.png)
+      <img width="664" height="132" alt="image" src="https://github.com/user-attachments/assets/5fa8e230-8e8e-4d85-9e46-3843e4935143" />
+
 
 * **Code Smell:** Números Mágicos (Magic Numbers).
     * **Problema:** Se usaban valores literales como `0.9` y `0.95` para los descuentos sin explicar su origen.
     * **Solución (Introduce Constant):** Se han extraído a constantes descriptivas: `DESCUENTO_VIP` y `DESCUENTO_POR7_DIAS`.
     * **Evidencia:**
     * **Antes**
-      ![alt text](image-22.png)
+      <img width="240" height="74" alt="image" src="https://github.com/user-attachments/assets/b635527a-26f8-472f-9856-f72ee8c1ea7a" />
       **Despues**
-      ![alt text](image-23.png)
+      <img width="499" height="97" alt="image" src="https://github.com/user-attachments/assets/1a1f9f84-e897-4024-8fcc-057abce74949" />
       **Antes**
-      ![alt text](image-24.png)
+      <img width="245" height="69" alt="image" src="https://github.com/user-attachments/assets/2b1c79ca-c115-494f-ad47-16f5b35903e8" />
       **Despues**
-      ![alt text](image-25.png)
+      <img width="383" height="72" alt="image" src="https://github.com/user-attachments/assets/fd4bcd9c-979e-448f-b152-279f23f2e78d" />
 
 * **Code Smell:** Bug potencial.
     * **Problema:** El cálculo de días restaba los días del año manualmente, lo que provocaba bugs en reservas entre distintos años (ej. fin de año).
@@ -127,9 +127,9 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución (Extract Method):** Se extrajo la lógica hacia métodos especializados: `registrarNuevoCliente()`, `registrarHabitacion()`, `realizarReserva()` y `cargarDatos()`.
     * **Evidencia:**
       **Antes**
-      ![alt text](image-30.png)
+      <img width="549" height="745" alt="image" src="https://github.com/user-attachments/assets/4cb26dec-fa4e-4371-941d-3006d0a15a07" />
       **Despues**
-      ![alt text](image-31.png)
+      <img width="468" height="700" alt="image" src="https://github.com/user-attachments/assets/24003da2-94e0-440b-95d8-f6656dccb446" />
       **Antes**
       ![alt text](image-36.png)
       **Despues**
