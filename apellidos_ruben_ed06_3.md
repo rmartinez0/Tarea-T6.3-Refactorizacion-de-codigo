@@ -37,9 +37,9 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución:** Se cambiaron los atributos a `private` y se modificó `Hotel` para usar los *Getters* y *Setters* (`getNombre()`, `setEsVip()`, etc.).
     * **Evidencia:**
     **Antes**
-    ![alt text](image-9.png)
+  <img width="740" height="72" alt="image" src="https://github.com/user-attachments/assets/1ef5d161-e8c4-4a8a-9516-e80182028c07" />
     **Despues**
-    ![alt text](image-10.png)
+  <img width="746" height="61" alt="image" src="https://github.com/user-attachments/assets/c56cac0a-075d-4179-beea-0e01b07ccf95" />
     **Antes**
     ![alt text](image-14.png)
     **Despues**
@@ -57,18 +57,17 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Problema:** El método `registrarHabitaciones` estaba definido pero nunca se invocaba.
     * **Solución (Safe Delete):** Se procedió a su eliminación.
     * **Evidencia:**
-      ![alt text](image-11.png)
-      
+  <img width="736" height="118" alt="image" src="https://github.com/user-attachments/assets/3930965e-7d2e-4554-bbbc-df38a44a9674" />
 
 * **Code Smell:** Nombres poco descriptivos.
     * **Problema:** En el método `listarReservas`, el bucle `forEach` usaba las variables genéricas `key` y `value`.
     * **Solución (Rename):** Se han renombrado a `numeroHabitacion` y `listaReservas` para dotar de contexto al código.
     * **Evidencia:**
      **Antes**
-      ![alt text](image-12.png)
+      <img width="739" height="203" alt="image" src="https://github.com/user-attachments/assets/50234f46-a3b0-4e09-86de-0b659ff3f0d3" />
       **Despues**
-      ![alt text](image-13.png)
-
+      <img width="729" height="197" alt="image" src="https://github.com/user-attachments/assets/00c541b5-8f77-41fd-8aaa-5cee3d9bb7e4" />
+      
 ### 2.2. Clase `Reserva.java`
 * **Code Smell:** Nombres poco descriptivos.
     * **Problema:** Variables como `n`, `pb` y `pf` no aportaban significado.
@@ -107,10 +106,9 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución:** Se eliminó el método y se generó el método estándar `toString()` usando el IDE.
     * **Evidencia:**
      **Antes**
-      ![alt text](image-26.png)
+      <img width="735" height="209" alt="image" src="https://github.com/user-attachments/assets/9591d3ae-1430-42c2-9f2b-5625661c0b40" />
       **Despues**
-      ![alt text](image-27.png)
-
+      <img width="671" height="230" alt="image" src="https://github.com/user-attachments/assets/744702aa-915c-4eba-a9d7-9ae1369158fb" />
 
 ### 2.3. Clase `Main.java`
 * **Code Smell:** Código Duplicado (Duplicated Code).
