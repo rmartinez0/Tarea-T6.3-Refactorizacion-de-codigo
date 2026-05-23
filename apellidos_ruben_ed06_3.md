@@ -1,8 +1,7 @@
 # Informe de Refactorización: Gestión de Reservas de Hotel
 
 **Autor:** Rubén Martínez Pérez
-**Módulo:** Entornos de Desarrollo
-**Repositorio GitHub:** [Añade aquí el enlace a tu repositorio]
+
 
 ---
 
