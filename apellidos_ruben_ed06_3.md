@@ -41,32 +41,32 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     **Despues**
   <img width="746" height="61" alt="image" src="https://github.com/user-attachments/assets/c56cac0a-075d-4179-beea-0e01b07ccf95" />
     **Antes**
-    ![alt text](image-14.png)
+      <img width="819" height="388" alt="image" src="https://github.com/user-attachments/assets/81881c64-ab22-454d-b86a-0b3ed9132adc" />
     **Despues**
-    ![alt text](image-15.png)
+  <img width="761" height="364" alt="image" src="https://github.com/user-attachments/assets/a0dc4b5b-d8d7-4265-99f8-49af701715f4" />
     **Antes**
-    ![alt txt](image-16.png)
+  <img width="762" height="99" alt="image" src="https://github.com/user-attachments/assets/8c78f6d6-2bd3-478b-bdf5-f6273b96e0ed" />
     **Despues**
-    ![alt text](image-17.png)
-    **Antes**
-    ![alt text](image-20.png)
+  <img width="768" height="75" alt="image" src="https://github.com/user-attachments/assets/7e67c27c-d29c-4666-a418-eb7d9b799b89" />
+   **Antes**
+  <img width="762" height="186" alt="image" src="https://github.com/user-attachments/assets/dd0187e0-69a4-472d-8f12-d2fd53b6bb21" />
     **Despues**
-    ![alt text](image-21.png)
-
+  <img width="770" height="217" alt="image" src="https://github.com/user-attachments/assets/906700a9-a9d9-4850-9c18-cf5c87cd3ad5" />
+  
 * **Code Smell:** Código Muerto (Dead Code).
     * **Problema:** El método `registrarHabitaciones` estaba definido pero nunca se invocaba.
     * **Solución (Safe Delete):** Se procedió a su eliminación.
     * **Evidencia:**
-  <img width="736" height="118" alt="image" src="https://github.com/user-attachments/assets/3930965e-7d2e-4554-bbbc-df38a44a9674" />
+  <img width="767" height="130" alt="image" src="https://github.com/user-attachments/assets/6239e7e4-37a5-4e4f-9b84-ed708523abef" />
 
 * **Code Smell:** Nombres poco descriptivos.
     * **Problema:** En el método `listarReservas`, el bucle `forEach` usaba las variables genéricas `key` y `value`.
     * **Solución (Rename):** Se han renombrado a `numeroHabitacion` y `listaReservas` para dotar de contexto al código.
     * **Evidencia:**
      **Antes**
-      <img width="739" height="203" alt="image" src="https://github.com/user-attachments/assets/50234f46-a3b0-4e09-86de-0b659ff3f0d3" />
+     <img width="758" height="203" alt="image" src="https://github.com/user-attachments/assets/20321d7a-00f0-46d2-92a8-65c0e7281863" />
       **Despues**
-      <img width="729" height="197" alt="image" src="https://github.com/user-attachments/assets/00c541b5-8f77-41fd-8aaa-5cee3d9bb7e4" />
+      <img width="762" height="202" alt="image" src="https://github.com/user-attachments/assets/2dc7e6a9-da00-4ac1-a876-673282c0566b" />
       
 ### 2.2. Clase `Reserva.java`
 * **Code Smell:** Nombres poco descriptivos.
@@ -74,10 +74,9 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución (Rename):** Se han renombrado a `numeroNoches`, `precioBaseTotal` y `precioFinal`.
     * **Evidencia:**
       **Antes**
-      <img width="662" height="126" alt="image" src="https://github.com/user-attachments/assets/79747cbc-151c-498e-8532-5241b189cd3d" />
+      <img width="765" height="141" alt="image" src="https://github.com/user-attachments/assets/69bb332d-2f67-448e-b570-9db28b72485f" />
       **Despues**
-      <img width="664" height="132" alt="image" src="https://github.com/user-attachments/assets/5fa8e230-8e8e-4d85-9e46-3843e4935143" />
-
+      <img width="748" height="147" alt="image" src="https://github.com/user-attachments/assets/569d551a-204b-4733-a3ae-9ebe0fc6f9a9" />
 
 * **Code Smell:** Números Mágicos (Magic Numbers).
     * **Problema:** Se usaban valores literales como `0.9` y `0.95` para los descuentos sin explicar su origen.
@@ -97,9 +96,9 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución:** Uso de la API estándar de fechas con `ChronoUnit.DAYS.between()`.
     * **Evidencia:**
     **Antes**
-      ![alt text](image-18.png)
+      <img width="758" height="49" alt="image" src="https://github.com/user-attachments/assets/a332cbb0-300c-4582-8e6c-5341b6007ae6" />
       **Despues**
-      ![alt text](image-19.png)
+     <img width="765" height="40" alt="image" src="https://github.com/user-attachments/assets/480216e6-39e1-4a8f-b59f-c54fef0a7f0b" />
 
 * **Code Smell:** Responsabilidad Única (SRP) y Método Largo.
     * **Problema:** El método `mostrarReserva()` pintaba datos por consola mediante muchos `System.out.println()`, mezclando el modelo con la vista.
@@ -116,9 +115,9 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución (Extract Method / Introduce Parameter):** Se creó el método `pedirFecha(String tipoFecha)` eliminando la duplicidad.
     * **Evidencia:**
       **Antes**
-      ![alt text](image-32.png)
+      <img width="676" height="485" alt="image" src="https://github.com/user-attachments/assets/23c97b33-10c0-41e0-bce5-f884347341bf" />
       **Despues**
-      ![alt text](image-33.png)
+      <img width="655" height="460" alt="image" src="https://github.com/user-attachments/assets/83e3860e-5189-445d-a6e0-5c3708147432" />
 
 * **Code Smell:** Long Method.
     * **Problema:** El método `main` y su bloque `switch` contenían demasiada lógica de negocio y entrada/salida.
@@ -129,46 +128,45 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
       **Despues**
       <img width="468" height="700" alt="image" src="https://github.com/user-attachments/assets/24003da2-94e0-440b-95d8-f6656dccb446" />
       **Antes**
-      ![alt text](image-36.png)
+      <img width="674" height="160" alt="image" src="https://github.com/user-attachments/assets/fb04464a-44a6-43e8-8649-bb508e1a7177" />
       **Despues**
-      ![alt text](image-37.png)
+      <img width="670" height="210" alt="image" src="https://github.com/user-attachments/assets/5b1bfa6c-2757-4176-b5e8-a97ffa592652" />
       **Antes**
-      ![alt text](image-34.png)
+      <img width="673" height="304" alt="image" src="https://github.com/user-attachments/assets/e35f5a22-b9dc-46b5-ae81-e76e543049ed" />
       **Despues**
-      ![alt text](image-35.png)
+      <img width="669" height="340" alt="image" src="https://github.com/user-attachments/assets/77b605be-89c2-4a8c-8566-6586f37744ba" />
       **Antes**
-      ![alt text](image-38.png)
+      <img width="672" height="367" alt="image" src="https://github.com/user-attachments/assets/c8480df0-72c3-4e73-a47d-17a8d62515f9" />
       **Depues**
-      ![alt text](image-39.png)
+      <img width="675" height="407" alt="image" src="https://github.com/user-attachments/assets/b2e80376-4cf3-46c0-8bfb-6d8eea90970f" />
 
 * **Code Smell:** Código Muerto (Dead Code).
     * **Problema:** Variables declaradas sin uso (`String tipo` global) e importaciones innecesarias (`java.util.Locale`, `Date`).
     * **Solución (Optimize Imports / Safe Delete):** Eliminación del ruido visual del archivo.
     * **Evidencia:**
      **Antes**
-      ![alt text](image-40.png)
+      <img width="337" height="91" alt="image" src="https://github.com/user-attachments/assets/4e274536-f48d-4c07-ab6c-d36de80d7306" />
       **Despues**
-      ![alt text](image-41.png)
-
+      <img width="266" height="54" alt="image" src="https://github.com/user-attachments/assets/07814bfb-dc34-46ff-a2d0-5e0a7955ab98" />
 
 ### 2.4. Clase `Cliente.java`
-* **Code Smell:** Condicionales inútiles (Redundancia).
+* **Code Smell:** Condicionales inútiles .
     * **Problema:** El constructor comprobaba con un `if(validarNombre(...))` métodos que ya lanzaban una excepción si fallaban. El `if` nunca iba a evaluar a `false`.
     * **Solución (Simplify):** Se han eliminado los bloques `if` inútiles dejando un código lineal.
     * **Evidencia:**
      **Antes**
-      ![alt text](image-42.png)
+      <img width="657" height="231" alt="image" src="https://github.com/user-attachments/assets/f9fa99b2-c9d2-47ce-a096-23e418817bf7" />
       **Despues**
-      ![alt text](image-43.png)
+      <img width="673" height="246" alt="image" src="https://github.com/user-attachments/assets/82a1079f-12c6-490c-93e0-6fa76286e346" />
 
 * **Code Smell:** Mal diseño de firma de método.
     * **Problema:** Los métodos de validación devolvían `boolean` y un redundante `return true;` cuando en realidad funcionaban lanzando excepciones ante los errores.
     * **Solución (Change Signature):** Se ha cambiado el tipo de retorno a `void` y eliminado los `return`.
     * **Evidencia:**
      **Antes**
-      ![alt text](image-44.png)
+      <img width="674" height="437" alt="image" src="https://github.com/user-attachments/assets/4f386511-7601-4458-82e6-4a980e37b4fb" />
       **Despues**
-      ![alt text](image-45.png)
+      <img width="667" height="406" alt="image" src="https://github.com/user-attachments/assets/c503c6c5-339e-4917-9bd4-1d165fa9303b" />
 
 ### 2.5. Clase `Habitacion.java`
 * **Code Smell:** Bug lógico.
@@ -176,9 +174,9 @@ En este documento se detallan los *Code Smells* identificados en el proyecto ori
     * **Solución:** Se corrigió la asignación a `disponible = false;`.
     * **Evidencia:**
       **Antes**
-      ![alt text](image-46.png)
+      <img width="633" height="155" alt="image" src="https://github.com/user-attachments/assets/367c8970-1171-4cd0-b9eb-c7afd23cc71a" />
       **Despues**
-      ![alt text](image-47.png)
+      <img width="660" height="144" alt="image" src="https://github.com/user-attachments/assets/472b9591-b98f-4503-adaf-5ab903018d8f" />
 
 ---
 
